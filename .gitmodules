@@ -22,3 +22,9 @@
 [submodule "source/rozdzial_2/rozdzial_26"]
 	path = source/rozdzial_2/rozdzial_26
 	url = https://github.com/domino0472/Partycjonowani-Danych.git
+[submodule "source/rozdzial_3/Implementacja"]
+	path = source/rozdzial_3/Implementacja
+	url = git@github.com:OskarProgrammer/implementacja-bazy-danych.git
+[submodule "source/rozdzial_3/Modele"]
+	path = source/rozdzial_3/Modele
+	url = git@github.com:OskarProgrammer/model-konceptualny-logiczny-fizyczny.git
