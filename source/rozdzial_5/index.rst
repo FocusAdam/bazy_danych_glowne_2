@@ -1,5 +1,5 @@
 ================================================
-Sprawozdanie: Zapytania do bazy danych
+Zapytania do bazy danych
 ================================================
 
 Cel rozdziału

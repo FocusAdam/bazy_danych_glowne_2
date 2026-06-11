@@ -17,6 +17,6 @@ documentation for details.
 
    ./rozdzial_1/index
    ./rozdzial_2/index
-   ./roxdzial_3/index
+   ./rozdzial_3/index
    ./rozdzial_4/index
    ./rozdzial_5/index

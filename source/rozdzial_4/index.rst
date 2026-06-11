@@ -1,5 +1,5 @@
 ====================================================
-Sprawozdanie: Implementacja oraz wsadowy skrypt
+Implementacja oraz wsadowy skrypt
 ====================================================
 
 :Autorzy:
