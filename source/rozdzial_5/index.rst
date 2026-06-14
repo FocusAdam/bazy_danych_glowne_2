@@ -2,6 +2,11 @@
 Zapytania do bazy danych
 ================================================
 
+:Autorzy:
+    1. Oskar Wrona
+    2. Kamil Lewandowski
+    3. Adam Tarkowski
+
 Cel rozdziału
 =============
 
