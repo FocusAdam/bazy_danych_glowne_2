@@ -21,13 +21,13 @@
 	url = git@github.com:OskarProgrammer/implementacja-bazy-danych.git
 [submodule "source/rozdzial_3/Modele"]
 	path = source/rozdzial_3/Modele
-	url = git@github.com:OskarProgrammer/model-konceptualny-logiczny-fizyczny.git
+	url = https://github.com/OskarProgrammer/model-konceptualny-logiczny-fizyczny.git
 [submodule "source/rozdzial_4/Implementacja"]
 	path = source/rozdzial_4/Implementacja
-	url = git@github.com:OskarProgrammer/implementacja-bazy-danych.git
+	url = https://github.com/OskarProgrammer/implementacja-bazy-danych.git
 [submodule "source/rozdzial_2/rozdzial_24"]
 	path = source/rozdzial_2/rozdzial_24
-	url = git@github.com:OskarProgrammer/monitorowanie_i_diagnostyka.git
+	url = https://github.com/OskarProgrammer/monitorowanie_i_diagnostyka.git
 [submodule "source/rozdzial_2/rozdzial_25"]
 	path = source/rozdzial_2/rozdzial_25
-	url = git@github.com:KMachoK/Tematyczne.git
+	url = https://github.com/KMachoK/Tematyczne.git

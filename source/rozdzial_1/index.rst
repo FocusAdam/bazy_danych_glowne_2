@@ -13,7 +13,7 @@ Repozytoria tematyczne
 * `Bazy Danych Tematyczne Repo MK <https://github.com/Youarecheck/Bazy_Danych_Tematyczne_Repo_MK.git>`_
 * `Bazy danych temat <https://github.com/pawlos1337/Bazy-danych-temat.git>`_
 * `Monitorowanie i diagnostyka <https://github.com/OskarProgrammer/monitorowanie_i_diagnostyka.git>`_
-* `Partycjonowani danych <https://github.com/KMachoK/Tematyczne.git>`_
+* `Wydajność, skalowanie i replikacja danych <https://github.com/KMachoK/Tematyczne.git>`_
 * `Partycjonowanie danych <https://github.com/domino0472/Partycjonowani-Danych.git>`_
 * `BazyDanych Subject <https://github.com/oski486/BazyDanych-Subject.git>`_
 * `Kopie zapasowe i odzyskiwanie danych <https://github.com/Koko9077/Kopie-zapasowe-i-odzyskiwanie-danych.git>`_
