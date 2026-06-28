@@ -11,8 +11,8 @@ import sys
 sys.path.insert(0, os.path.abspath("./rozdzial_5"))
 
 project = 'Sprawozdanie Bazy Danych 1'
-copyright = '2026, Oskar Wrona 284361'
-author = 'Oskar Wrona'
+copyright = '2026, Adam Tarkowski'
+author = 'Adam Tarkowski'
 release = '0.0.1'
 
 # -- General configuration ---------------------------------------------------
@@ -41,4 +41,8 @@ html_theme = 'alabaster'
 
 latex_elements = {
     'papersize': 'a4paper',
+    'cmappkg': '',
+    'fontenc': r'\usepackage{lmodern}\usepackage[T1]{fontenc}',
+    'fontpkg': '',
+    'extraclassoptions': 'openany',
 }

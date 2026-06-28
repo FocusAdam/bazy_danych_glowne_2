@@ -3,85 +3,86 @@ Wprowadzenie
 ===========================
 
 :Autor:
-    Oskar Wrona
+    Adam Tarkowski
 
-Rozdział stanowi indywidualne wprowadzenie do sprawozdania z kursu baz danych,
-realizowanego w semestrze letnim roku akademickiego 2025/2026.
+Niniejszy rozdział stanowi indywidualne wprowadzenie do sprawozdania z kursu
+baz danych, realizowanego w semestrze letnim roku akademickiego 2025/2026.
 
 Wprowadzenie tematyczne
 =======================
 
-Ćwiczenia i eksperymenty przedstawione w raporcie obejmują pełny cykl pracy
-z relacyjną bazą danych: od poznania zagadnień związanych z jej utrzymaniem,
-przez analizę wymagań i projektowanie struktury danych, aż do implementacji,
-zasilenia bazy danymi oraz wykonywania zapytań. Część literaturowa przybliża
-praktyczne aspekty eksploatacji PostgreSQL, między innymi dobór sprzętu,
-konfigurację serwera, kontrolę i konserwację, monitorowanie, diagnostykę,
-partycjonowanie, bezpieczeństwo, tworzenie kopii zapasowych oraz zagadnienia
-wydajności, skalowania i replikacji.
+Raport dokumentuje pełny cykl pracy z relacyjną bazą danych: od zagadnień
+związanych z utrzymaniem infrastruktury, przez analizę wymagań i projektowanie
+struktury danych, aż po implementację, zasilenie bazy danymi i wykonywanie
+zapytań. Część literaturowa przybliża praktyczne aspekty eksploatacji
+PostgreSQL — dobór sprzętu, konfigurację serwera, kontrolę i konserwację,
+monitorowanie, diagnostykę, partycjonowanie, bezpieczeństwo, tworzenie kopii
+zapasowych oraz zagadnienia wydajności, skalowania i replikacji.
 
-Część projektowa została oparta na przykładzie systemu zarządzania sprzedażą
-w sklepie internetowym. Analizie poddano procesy związane z obsługą klientów,
+Część projektowa opiera się na przykładzie systemu zarządzania sprzedażą
+w sklepie internetowym. Przeanalizowano procesy związane z obsługą klientów,
 produktów, producentów, kategorii, kodów rabatowych, zamówień, płatności,
-wysyłek oraz opinii. Na tej podstawie przygotowano model konceptualny, model
-logiczny doprowadzony do trzeciej postaci normalnej oraz dwa modele fizyczne,
-dostosowane odpowiednio do PostgreSQL i SQLite. Szczególną uwagę poświęcono
-poprawnemu odwzorowaniu zależności między danymi, zachowaniu historii cen
-produktów w zamówieniach oraz zastosowaniu kluczy i więzów integralności.
+wysyłek i opinii. Na tej podstawie powstały: model konceptualny, model logiczny
+w trzeciej postaci normalnej oraz dwa modele fizyczne — dostosowane odpowiednio
+do PostgreSQL i SQLite. Szczególną uwagę poświęcono prawidłowemu odwzorowaniu
+zależności między danymi, zachowaniu historii cen produktów w zamówieniach
+oraz właściwemu zastosowaniu kluczy i więzów integralności.
 
-W dalszej części raportu przedstawiono implementację schematów w obu systemach
-zarządzania bazą danych oraz wsadowe wprowadzanie danych z pliku CSV za pomocą
-skryptów napisanych w języku Python. Omówiono walidację danych, sprawdzanie
-istnienia rekordów powiązanych, kolejność operacji oraz obsługę transakcji
-i błędów. Do sprawdzenia działania utworzonych baz przygotowano następnie zapytania
-wykorzystujące złączenia, agregacje, grupowanie, sortowanie i podzapytania.
-Zapytania przygotowano oddzielnie dla PostgreSQL i SQLite, co umożliwia
-porównywanie działania obu silników na tym samym modelu i zbiorze danych.
+Kolejna część raportu przedstawia implementację schematów w obu systemach
+zarządzania bazą danych, a także wsadowe wprowadzanie danych z pliku CSV
+przy użyciu skryptów w języku Python. Opisano tam walidację danych, weryfikację
+istnienia rekordów powiązanych, wymaganą kolejność operacji oraz obsługę
+transakcji i błędów. W celu sprawdzenia poprawności działania baz przygotowano
+zapytania wykorzystujące złączenia, agregacje, grupowanie, sortowanie
+i podzapytania — oddzielnie dla PostgreSQL i SQLite — co pozwala na
+bezpośrednie porównanie zachowania obu silników na identycznym modelu danych.
 
 Wnioski z ćwiczeń i eksperymentów
 =================================
 
-Przeprowadzone ćwiczenia pokazały, że jakość bazy danych zależy przede wszystkim
-od poprawnego rozpoznania procesów biznesowych i zależności pomiędzy danymi.
-Pomijanie kontekstu transakcji lub niewłaściwe odwzorowanie relacji
-wiele-do-wielu prowadziłoby do utraty istotnych informacji. W projekcie problem
-ten rozwiązano przez wprowadzenie tabeli ``Pozycje_Zamowienia``, która łączy
-zamówienia z produktami, a jednocześnie przechowuje liczbę sztuk i cenę
-historyczną.
+Przeprowadzone ćwiczenia potwierdziły, że jakość bazy danych zależy przede
+wszystkim od rzetelnego rozpoznania procesów biznesowych i zależności między
+danymi. Pominięcie kontekstu transakcji lub błędne odwzorowanie relacji
+wiele-do-wielu skutkowałoby utratą kluczowych informacji. Problem ten
+rozwiązano w projekcie przez wprowadzenie tabeli ``Pozycje_Zamowienia``,
+która wiąże zamówienia z produktami, przechowując jednocześnie liczbę sztuk
+i historyczną cenę zakupu.
 
-Normalizacja do trzeciej postaci normalnej ograniczyła powielanie informacji
-i ryzyko wystąpienia anomalii podczas dodawania, modyfikowania oraz usuwania
-danych. Jednocześnie wykazała, że bardziej uporządkowana struktura wymaga
-stosowania złączeń wielu tabel podczas odtwarzania pełnego obrazu procesu
-sprzedaży. Przygotowane zapytania pokazują, że taki model pozwala zarówno
-odtworzyć szczegóły zamówień, jak i wykonywać analizy, na przykład tworzyć
-ranking klientów, obliczać sprzedaż według kategorii czy zestawiać oceny
-produktów. Wartości sprzedaży są liczone dla zakończonych płatności,
-z pominięciem anulowanych zamówień i z uwzględnieniem historycznego rabatu.
+Normalizacja do trzeciej postaci normalnej skutecznie ograniczyła powielanie
+danych i ryzyko anomalii przy operacjach wstawiania, modyfikowania i usuwania
+rekordów. Okazało się jednak, że czytelniejsza struktura tabel pociąga za sobą
+konieczność łączenia wielu relacji przy odtwarzaniu pełnego obrazu sprzedaży.
+Przygotowane zapytania dowodzą, że wypracowany model umożliwia zarówno
+szczegółowy wgląd w historię zamówień, jak i przekrojowe analizy — tworzenie
+rankingów klientów, zestawień sprzedaży według kategorii czy porównań ocen
+produktów. Wszystkie wartości sprzedaży są wyliczane wyłącznie dla zakończonych
+płatności, z pominięciem zamówień anulowanych i z uwzględnieniem historycznego
+rabatu.
 
-Implementacja w PostgreSQL i SQLite wykazała, że ten sam model logiczny może
-zostać przeniesiony pomiędzy różnymi systemami bazodanowymi, lecz wymaga
-dostosowania typów danych, sposobu generowania identyfikatorów i niektórych
-elementów składni. PostgreSQL oferuje bardziej precyzyjne typy, takie jak
-``NUMERIC`` i ``TIMESTAMP``, natomiast SQLite wykorzystuje prostszy system klas
-przechowywania. Mimo tych różnic oba rozwiązania realizują ten sam zestaw
-reguł integralności, a odpowiadające sobie zapytania umożliwiają porównanie
-wyników.
+Przeniesienie tego samego modelu logicznego na PostgreSQL i SQLite wykazało,
+że migracja między silnikami jest możliwa, lecz wymaga dostosowania typów
+danych, mechanizmów generowania identyfikatorów i pewnych elementów składni.
+PostgreSQL dysponuje precyzyjniejszymi typami — takimi jak ``NUMERIC`` czy
+``TIMESTAMP`` — podczas gdy SQLite opiera się na prostszym systemie klas
+przechowywania. Mimo tych różnic oba systemy egzekwują ten sam zestaw reguł
+integralności, a odpowiadające sobie zapytania dają porównywalne wyniki.
 
-Eksperymenty z importem danych potwierdziły znaczenie walidacji, więzów
-integralności oraz transakcji. Dane muszą być dodawane w kolejności wynikającej
-z zależności między tabelami, a błąd jednej pozycji nie powinien pozostawiać
-niekompletnego zamówienia. Wiersze należące do tego samego zamówienia są
-przetwarzane w jednej transakcji, dlatego błąd dowolnej pozycji powoduje
-wycofanie całego zamówienia. Pozwala to zachować spójność bazy również podczas
-automatycznego zasilania jej większą liczbą rekordów.
+Eksperymenty z importem danych uwypukliły znaczenie walidacji wejściowej,
+więzów integralności i transakcji. Rekordy muszą być wstawiane w kolejności
+wynikającej z zależności między tabelami, a błąd pojedynczej pozycji nie może
+pozostawiać niekompletnego zamówienia w bazie. Wiersze należące do jednego
+zamówienia są przetwarzane w ramach tej samej transakcji, dzięki czemu
+niepowodzenie dowolnego kroku powoduje wycofanie całości. Takie podejście
+zapewnia spójność danych nawet przy automatycznym zasilaniu bazy dużą liczbą
+rekordów.
 
-Całość prac pokazała również, że samo poprawne zaprojektowanie tabel nie
-wyczerpuje zagadnienia utrzymania bazy danych. W rzeczywistym środowisku równie
-ważne są konfiguracja serwera, monitorowanie, bezpieczeństwo, kopie zapasowe
-i planowanie wydajności. Projektowanie, implementacja, testowanie zapytań
-oraz administracja tworzą jeden powiązany proces, którego celem jest uzyskanie
-systemu spójnego, niezawodnego i możliwego do dalszego rozwoju.
+Całość wykonanych prac pokazała, że poprawne zaprojektowanie tabel to dopiero
+punkt wyjścia, a nie koniec zagadnienia. W środowisku produkcyjnym równie
+istotne okazują się konfiguracja serwera, bieżące monitorowanie, dbałość o
+bezpieczeństwo, regularne kopie zapasowe i świadome planowanie wydajności.
+Projektowanie, implementacja, testowanie zapytań oraz administracja składają
+się na jeden spójny proces, którego celem jest system niezawodny, bezpieczny
+i gotowy na dalszy rozwój.
 
 
 Spis wszystkich użytych w raporcie repozytoriów
