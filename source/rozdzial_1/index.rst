@@ -113,4 +113,4 @@ Implementacja
 Repozytorium główne
 --------------------
 
-* `Repozytorium główne <https://github.com/OskarProgrammer/bazy_danych_glowne_3.git>`_
+* `Repozytorium główne <https://github.com/FocusAdam/bazy_danych_glowne_2>`_
